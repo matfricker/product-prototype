@@ -9,7 +9,7 @@ body {
 }
 
 .content {
-    padding: 10px;
+    padding: 0;
 }
 
 .section {
@@ -47,15 +47,19 @@ button {
 }
 
 .debugging-container {
+    position: fixed;
+    top: 0;
+    left: 20px;
+    width: 350px;
     height: auto;
-    width: 100%;
     color: #FFFFFF;
     background-color: rgba(0, 0, 0, 0.7);
-    margin: 20px 0 0 0;
+    margin: 10px 0 0 0;
 }
 
 .debugging-content {
     padding: 10px;
+    margin: 0;
 }
 
 .debugging-content pre {

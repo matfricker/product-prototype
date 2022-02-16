@@ -24,7 +24,7 @@
 
                 <form name="BicycleQuoteForm" method="post" novalidate ng-submit="BicycleQuoteForm.$valid && ValidateForm(BicycleQuoteForm) && SendForm()">
                     <div class="section">
-                        <label>How long do you need cover for:</label>
+                        <label>Length of Cover:</label>
                         <div class="" ng-repeat="LengthOfCover in LengthOfCoverOptions">
                             <input class="" type="radio" id="radio-lengthofcover-{{LengthOfCover.id}}" value="{{LengthOfCover.id}}" ng-model="Quote.LengthOfCover" />
                             <label class="" for="radio-lengthofcover-{{LengthOfCover.id}}">{{LengthOfCover.value}}</label>
@@ -67,16 +67,16 @@
                     <div class="section">
                         <label>Value of helmets, clothing and wetsuits:</label>
                         <div class="" ng-repeat="HelmetAndClothingValue in HelmetAndClothingValueOptions">
-                            <input class="" type="radio" id="radio-helmetandclothingvalue-{{HelmetAndClothingValue.id}}" value="{{HelmetAndClothingValue.value}}" ng-model="Basket.Quote.HelmetAndClothingValue" />
+                            <input class="" type="radio" id="radio-helmetandclothingvalue-{{HelmetAndClothingValue.id}}" value="{{HelmetAndClothingValue.value}}" ng-model="Quote.HelmetAndClothingValue" />
                             <label class="" for="radio-helmetandclothingvalue-{{HelmetAndClothingValue.id}}">{{HelmetAndClothingValue.value}}</label>
                         </div>
                     </div>
 
                     <div class="section">
-                        <label>Select your level of cover:</label>
+                        <label>Level of Cover:</label>
                         <div>
                             <div class="" ng-repeat="TypeOfCover in TypeOfCoverValueOptions">
-                                <input class="" type="radio" id="radio-typeofcover-{{TypeOfCover.id}}" value="{{TypeOfCover.id}}" ng-model="Quote.TypeOfCover" />
+                                <input class="" type="radio" id="radio-typeofcover-{{TypeOfCover.id}}" value="{{TypeOfCover.value}}" ng-model="Quote.TypeOfCover" />
                                 <label class="" for="radio-typeofcover-{{TypeOfCover.id}}">{{TypeOfCover.value}}</label>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                         <label>How many bicycle claims in the last 3 years:</label>
                         <div>
                             <div class="" ng-repeat="Claim in ClaimOptions">
-                                <input class="" type="radio" id="radio-claims-{{Claim.id}}" value="{{Claim.id}}" ng-model="Quote.NumberOfClaimsInLastThreeYears" />
+                                <input class="" type="radio" id="radio-claims-{{Claim.id}}" value="{{Claim.value}}" ng-model="Quote.NumberOfClaimsInLastThreeYears" />
                                 <label class="" for="radio-claims-{{Claim.id}}">{{Claim.value}}</label>
                             </div>
                         </div>
