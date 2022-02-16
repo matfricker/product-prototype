@@ -5,13 +5,11 @@
         .module('app')
         .controller('Bicycle', Bicycle);
         
-    Bicycle.$inject = ['$scope', '$log', 'Common', 'BicycleServices'];
+    Bicycle.$inject = ['$scope', 'Common', 'BicycleServices'];
     
-    function Bicycle ($scope, $log, Common, BicycleServices) {
+    function Bicycle ($scope, Common, BicycleServices) {
 
-        $scope.Basket = {
-            BicycleQuotes: [{}]
-        };
+        $scope.Quote = {};
 
         $scope.LengthOfCoverOptions = BicycleServices.GetLengthOfCoverOptions();
         $scope.BicycleTypeOptions = BicycleServices.GetBicycleTypeOptions();
@@ -29,13 +27,13 @@
 
         // ADD BICYCLE
         $scope.AddBicycle = function() {
-            if (angular.isUndefined($scope.Basket.BicycleQuotes[0].Bicycles)) {
-                $scope.Basket.BicycleQuotes[0].Bicycles = [];
+            if (angular.isUndefined($scope.Quote.Bicycles)) {
+                $scope.Quote.Bicycles = [];
             }
 
             let identifier = Math.ceil(Math.random() * Math.pow(10, 10));
 
-            $scope.Basket.BicycleQuotes[0].Bicycles
+            $scope.Quote.Bicycles
                 .push({
                     TempId: identifier,
                     MakeModel: $scope.Bicycle.MakeModel,
@@ -51,13 +49,13 @@
 
         // REMOVE BICYCLE
         $scope.RemoveBicycle = function (index) {
-            $scope.Basket.BicycleQuotes[0].Bicycles.splice(index, 1);
+            $scope.Quote.Bicycles.splice(index, 1);
         }
 
         $scope.CheckDateOfBirth = function () {
             if ($scope.DateOfBirthDay && $scope.DateOfBirthMonth && $scope.DateOfBirthYear) {
-                $scope.Basket.BicycleQuotes[0].DateOfBirth = new Date(Date.UTC($scope.DateOfBirthYear, $scope.DateOfBirthMonth, $scope.DateOfBirthDay));
-                $scope.Basket.BicycleQuotes[0].DateOfBirth.toUTCString();
+                $scope.Quote.DateOfBirth = new Date(Date.UTC($scope.DateOfBirthYear, $scope.DateOfBirthMonth, $scope.DateOfBirthDay));
+                $scope.Quote.DateOfBirth.toUTCString();
 
                 $scope.DateOfBirth1 = new Date($scope.DateOfBirthYear, $scope.DateOfBirthMonth, $scope.DateOfBirthDay);
                 $scope.DateOfBirth1.toUTCString();

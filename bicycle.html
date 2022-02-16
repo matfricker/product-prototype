@@ -15,30 +15,35 @@
     <body ng-controller="Main">
         <div class="container" ng-cloak ng-controller="Bicycle">
             <div class="content">
+
+                <div class="debugging-container" ng-show="debugging">
+                    <dir class="debugging-content">
+                        <pre>QUOTE >> {{Quote | json}}</pre>
+                    </dir>
+                </div>
+
                 <form name="BicycleQuoteForm" method="post" novalidate ng-submit="BicycleQuoteForm.$valid && ValidateForm(BicycleQuoteForm) && SendForm()">
-                    <div class="">
+                    <div class="section">
                         <label>How long do you need cover for:</label>
                         <div class="" ng-repeat="LengthOfCover in LengthOfCoverOptions">
-                            <input class="" type="radio" id="radio-lengthofcover-{{LengthOfCover.id}}" value="{{LengthOfCover.id}}" ng-model="Basket.BicycleQuotes[0].LengthOfCover" />
+                            <input class="" type="radio" id="radio-lengthofcover-{{LengthOfCover.id}}" value="{{LengthOfCover.id}}" ng-model="Quote.LengthOfCover" />
                             <label class="" for="radio-lengthofcover-{{LengthOfCover.id}}">{{LengthOfCover.value}}</label>
                         </div>
                     </div>
                         
-                    <div class="">
+                    <div class="section">
                         <!--BICYLE SECTION START-->
                         <label>Bicycles:</label>
-                        <p ng-show="Basket.BicycleQuotes[0].Bicycles.length > 0">You currently have <strong>{{Basket.BicycleQuotes[0].Bicycles.length}} {{BicycleText}}</strong>, with a combined value of <strong>£{{TotalBicycleValue}}</strong> on the current quote.</p>
+                        <p ng-show="Quote.Bicycles.length > 0">You currently have <strong>{{Quote.Bicycles.length}} {{BicycleText}}</strong>, with a combined value of <strong>£{{TotalBicycleValue}}</strong> on the current quote.</p>
                         
-                        <ul class="">
-                            <li class="" ng-repeat="Bicycle in Basket.BicycleQuotes[0].Bicycles">
-                                <strong>{{Bicycle.MakeModel | uppercase}}</strong><br/>
-                                <small>{{Bicycle.TypeName}}</small><br/>
-                                <small>&pound;{{Bicycle.Value}}</small></br>
-                                <a class="remove-link" ng-show="Basket.BicycleQuotes[0].Bicycles.length > 1" ng-click="RemoveBicycle($index)">remove</a>
+                        <ul style="padding-left: 10px;">
+                            <li style="list-style-type: none;" ng-repeat="Bicycle in Quote.Bicycles">
+                                <strong>{{Bicycle.MakeModel | uppercase}}</strong> | <small>{{Bicycle.TypeName}}</small> | <small>&pound;{{Bicycle.Value}}</small></br>
+                                <a class="remove-link" ng-show="Quote.Bicycles.length > 1" ng-click="RemoveBicycle($index)">remove</a>
                             </li>
                         </ul>
                         
-                        <div class="" ng-show="ShowAddBicycle">
+                        <div ng-show="ShowAddBicycle">
                             <input class="" type="text" ng-model="Bicycle.MakeModel" placeholder="Model" />
                             <input class="" type="text" placeholder="Value" ng-model="Bicycle.Value">
                             <select class="" ng-model="Bicycle.Type" ng-options="option.id as option.value for option in BicycleTypeOptions">
@@ -49,85 +54,85 @@
                         <!--BICYLE SECTION END-->
                     </div>                   
 
-                    <div class="">
+                    <div class="section">
                         <label>Enter the value of any accessories you wish to insure:</label>
-                        <input class="" type="text" ng-model="Basket.BicycleQuotes[0].AccessoriesValue" ng-blur="AccessoriesValueBlur()" placeholder="250 as standard" />
+                        <input class="" type="text" ng-model="Quote.AccessoriesValue" ng-blur="AccessoriesValueBlur()" placeholder="250 as standard" />
                     </div>
 
-                    <div class="">
+                    <div class="section">
                         <label>Enter the value of any additional wheelsets you wish to insure:</label>
-                        <input class="" type="text" ng-model="Basket.BicycleQuotes[0].WheelsetValue" ng-blur="WheelsetValueBlur()" />
+                        <input class="" type="text" ng-model="Quote.WheelsetValue" ng-blur="WheelsetValueBlur()" />
                     </div>
 
-                    <div class="">
+                    <div class="section">
                         <label>Value of helmets, clothing and wetsuits:</label>
                         <div class="" ng-repeat="HelmetAndClothingValue in HelmetAndClothingValueOptions">
-                            <input class="" type="radio" id="radio-helmetandclothingvalue-{{HelmetAndClothingValue.id}}" value="{{HelmetAndClothingValue.value}}" ng-model="Basket.BicycleQuotes[0].HelmetAndClothingValue" />
+                            <input class="" type="radio" id="radio-helmetandclothingvalue-{{HelmetAndClothingValue.id}}" value="{{HelmetAndClothingValue.value}}" ng-model="Basket.Quote.HelmetAndClothingValue" />
                             <label class="" for="radio-helmetandclothingvalue-{{HelmetAndClothingValue.id}}">{{HelmetAndClothingValue.value}}</label>
                         </div>
                     </div>
 
-                    <div class="">
+                    <div class="section">
                         <label>Select your level of cover:</label>
                         <div>
                             <div class="" ng-repeat="TypeOfCover in TypeOfCoverValueOptions">
-                                <input class="" type="radio" id="radio-typeofcover-{{TypeOfCover.id}}" value="{{TypeOfCover.id}}" ng-model="Basket.BicycleQuotes[0].TypeOfCover" />
+                                <input class="" type="radio" id="radio-typeofcover-{{TypeOfCover.id}}" value="{{TypeOfCover.id}}" ng-model="Quote.TypeOfCover" />
                                 <label class="" for="radio-typeofcover-{{TypeOfCover.id}}">{{TypeOfCover.value}}</label>
                             </div>
                         </div>
                     </div>
 
-                    <div class="">
+                    <div class="section">
                         <label>How many bicycle claims in the last 3 years:</label>
                         <div>
                             <div class="" ng-repeat="Claim in ClaimOptions">
-                                <input class="" type="radio" id="radio-claims-{{Claim.id}}" value="{{Claim.id}}" ng-model="Basket.BicycleQuotes[0].NumberOfClaimsInLastThreeYears" />
+                                <input class="" type="radio" id="radio-claims-{{Claim.id}}" value="{{Claim.id}}" ng-model="Quote.NumberOfClaimsInLastThreeYears" />
                                 <label class="" for="radio-claims-{{Claim.id}}">{{Claim.value}}</label>
                             </div>
                         </div>
                     </div>
 
-                    <div class="">
+                    <div class="section">
                         <label>Select Cover Start Date:</label>
-                        <select class="" ng-model="Basket.BicycleQuotes[0].CoverStartDate" ng-change="ChangeCoverStartDate()" ng-options="option.Id as option.Name for option in CoverStartDateOptions" required>
+                        <select class="" ng-model="Quote.CoverStartDate" ng-change="ChangeCoverStartDate()" ng-options="option.Id as option.Name for option in CoverStartDateOptions" required>
                             <option value="">Choose a date</option>
                         </select>
                     </div>
 
-                    <div class="">
+                    <div class="section">
                         <label>Enter your date of birth:</label>
                         <div class="">
                             <div class="">
-                                <select class="" ng-model="DateOfBirthDay" ng-disabled="!Basket.BicycleQuotes[0].CoverStartDate" ng-change="CheckDateOfBirth()" integer>
+                                <select class="" ng-model="DateOfBirthDay" ng-disabled="!Quote.CoverStartDate" ng-change="CheckDateOfBirth()" integer>
                                     <option value="">Day</option>
                                     <option ng:repeat="day in DayOptions" value="{{day.id}}" >{{day.name}}</option>
                                 </select>
                             </div>
                             <div class="">
-                                <select class="" ng-model="DateOfBirthMonth" ng-disabled="!Basket.BicycleQuotes[0].CoverStartDate" ng-change="CheckDateOfBirth()" integer>
+                                <select class="" ng-model="DateOfBirthMonth" ng-disabled="!Quote.CoverStartDate" ng-change="CheckDateOfBirth()" integer>
                                     <option value="">Month</option>
                                     <option ng:repeat="month in MonthOptions" value="{{month.id}}" >{{month.name}}</option>
                                 </select>
                             </div>
                             <div class="">
-                                <select class="" ng-model="DateOfBirthYear" ng-disabled="!Basket.BicycleQuotes[0].CoverStartDate" ng-change="CheckDateOfBirth()" integer>
+                                <select class="" ng-model="DateOfBirthYear" ng-disabled="!Quote.CoverStartDate" ng-change="CheckDateOfBirth()" integer>
                                     <option value="">Year</option>
                                     <option ng:repeat="year in DateOfBirthYearOptions" value="{{year.id}}" >{{year.name}}</option>
                                 </select>
                             </div>
                             <div>
-                                <label>{{ Basket.BicycleQuotes[0].DateOfBirth }}</lable><br/>
+                                <label>{{ Quote.DateOfBirth }}</lable><br/>
                                 <label>{{ DateOfBirth1 }}</label><br/>
                                 <label>{{ DateOfBirth2 }}</label><br/>
                             </div>
                             <div class="">
                                 <label>Age:</label>
-                                <label>{{Basket.BicycleQuotes[0].Age}}</label>
+                                <label>{{Quote.Age}}</label>
                             </div>
                         </div>
                     </div>
 
-                    <div class="">
+                    <div class="section">
                         <label>Please confirm the following statements:</label>
                         <div>
                             <ul>
@@ -136,21 +141,16 @@
                                 <li><p>I have never had a policy cancelled, voided or renewal refused.</p></li>
                             </ul>
                             <div>
-                                <input id="agreeToStatments" type="checkbox" ng-model="Basket.BicycleQuotes[0].Statments" ng-true-value="true" ng-false-value="false" ng-required="StatementRequired" />
+                                <input id="agreeToStatments" type="checkbox" ng-model="Quote.AgreedToStatments" ng-true-value="true" ng-false-value="false" ng-required="StatementRequired" />
                                 <label for="agreeToStatments">I agree to the above statements.</label>
                             </div>
                         </div>
                     </div>
 
-                    <div ng-if="Basket.BicycleQuotes[0].Statments">
+                    <div ng-if="Quote.AgreedToStatments">
                         <p style="color: #00CC00;">You have agreed to the statements above</p>
                     </div>
                 </form>
-                <div class="debugging-container" ng-show="debugging">
-                    <dir class="debugging-content">
-                        <pre>BASKET >> {{Basket | json}}</pre>
-                    </dir>
-                </div>
             </div>
         </div>
     </body>
