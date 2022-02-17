@@ -56,6 +56,7 @@
             if ($scope.DateOfBirthDay && $scope.DateOfBirthMonth && $scope.DateOfBirthYear) {
                 $scope.Quote.DateOfBirth = new Date(Date.UTC($scope.DateOfBirthYear, $scope.DateOfBirthMonth, $scope.DateOfBirthDay));
                 $scope.Quote.Age = Common.GetAge($scope.Quote.DateOfBirth);
+                $scope.Quote.InceptionAge = Common.GetAgeAtInception($scope.Quote.DateOfBirth, $scope.Quote.CoverStartDate);
             }
         }
 
