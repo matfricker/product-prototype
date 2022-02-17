@@ -55,13 +55,7 @@
         $scope.CheckDateOfBirth = function () {
             if ($scope.DateOfBirthDay && $scope.DateOfBirthMonth && $scope.DateOfBirthYear) {
                 $scope.Quote.DateOfBirth = new Date(Date.UTC($scope.DateOfBirthYear, $scope.DateOfBirthMonth, $scope.DateOfBirthDay));
-                $scope.Quote.DateOfBirth.toUTCString();
-
-                $scope.DateOfBirth1 = new Date($scope.DateOfBirthYear, $scope.DateOfBirthMonth, $scope.DateOfBirthDay);
-                $scope.DateOfBirth1.toUTCString();
-
-                $scope.DateOfBirth2 = new Date($scope.DateOfBirthYear, $scope.DateOfBirthMonth, $scope.DateOfBirthDay);
-                $scope.DateOfBirth2.toISOString();
+                $scope.Quote.Age = Common.GetAge($scope.Quote.DateOfBirth);
             }
         }
 

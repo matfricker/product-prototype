@@ -124,7 +124,8 @@
             }
     
             function getAge(birth) {
-                var nowyear = today.getFullYear(),
+                var today = new Date(),
+                    nowyear = today.getFullYear(),
                     nowmonth = today.getMonth(),
                     nowday = today.getDate(),
                     birthyear = birth.getFullYear(),
@@ -137,6 +138,7 @@
                 if (ageMonth < 0 || (ageMonth === 0 && ageDay < 0)) {
                     age = parseInt(age, 10) - 1;
                 }
+
     
                 return age;
             }
