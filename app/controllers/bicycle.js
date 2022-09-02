@@ -41,6 +41,10 @@
                     Type: $scope.Bicycle.Type,
                     TypeName: Common.GetBicycleType($scope.Bicycle.Type)
                 });
+
+            if ($scope.Quote.Bicycles.length > 3) {
+                $scope.ShowAddBicycle = false;
+            }
         
             $scope.TotalBicycleValue += parseInt($scope.Bicycle.Value, 10);
 
@@ -50,6 +54,9 @@
         // REMOVE BICYCLE
         $scope.RemoveBicycle = function (index) {
             $scope.Quote.Bicycles.splice(index, 1);
+            if ($scope.Quote.Bicycles.length <= 3) {
+                $scope.ShowAddBicycle = true;
+            }
         }
 
         $scope.CheckDateOfBirth = function () {
