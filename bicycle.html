@@ -17,9 +17,9 @@
             <div class="content">
 
                 <div class="debugging-container" ng-show="debugging">
-                    <dir class="debugging-content">
+                    <div class="debugging-content">
                         <pre>QUOTE >> {{Quote | json}}</pre>
-                    </dir>
+                    </div>
                 </div>
 
                 <form name="BicycleQuoteForm" method="post" novalidate ng-submit="BicycleQuoteForm.$valid && ValidateForm(BicycleQuoteForm) && SendForm()">
@@ -33,7 +33,7 @@
                         
                     <div class="section">
                         <!--BICYLE SECTION START-->
-                        <label>Bicycles:</label>
+                        <label>Bicycles (max 4):</label>
                         <p ng-show="Quote.Bicycles.length > 0">You currently have <strong>{{Quote.Bicycles.length}} {{BicycleText}}</strong>, with a combined value of <strong>£{{TotalBicycleValue}}</strong> on the current quote.</p>
                         
                         <ul style="padding-left: 10px;">
@@ -42,7 +42,7 @@
                                 <a class="remove-link" ng-show="Quote.Bicycles.length > 1" ng-click="RemoveBicycle($index)">remove</a>
                             </li>
                         </ul>
-                        
+
                         <div ng-show="ShowAddBicycle">
                             <input class="" type="text" ng-model="Bicycle.MakeModel" placeholder="Model" />
                             <input class="" type="text" placeholder="Value" ng-model="Bicycle.Value">
@@ -52,7 +52,7 @@
                             <button class="" type="button" ng-click="AddBicycle()" ng-disabled="IsAddToQuoteDisabled">Add to Quote</button>
                         </div>
                         <!--BICYLE SECTION END-->
-                    </div>                   
+                    </div>
 
                     <div class="section">
                         <label>Enter the value of any accessories you wish to insure:</label>

@@ -10,7 +10,7 @@
     function Main($scope) {
         console.log('Hello from main / parent controller...');
 
-        $scope.message = 'Hello...';
+        $scope.message = 'Bicycles';
 
         console.log($scope.message);
         $scope.debugging = true;
