@@ -1,4 +1,7 @@
-before running need to run 'npm install'
+# In terminal
 
-run 'npm start' in terminal window in VS Code, which will spin up application.
-run 'npm test' in terminal to run tests. 
+before starting application run `npm install` 
+
+run `npm start`
+
+run `npm test`
