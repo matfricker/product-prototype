@@ -8,10 +8,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="/node_modules/angular/angular.js"></script>
         <script src="app/modules.js"></script>
-        <script src="app/controllers/main.js"></script>
+        <script src="app/controllers/main.controller.js"></script>
+        <script src="app/services/user.service.js"></script>
     </head>
 
-    <body ng-controller="Main">
+    <body ng-controller="MainController">
         <div class="container">
             <h1>{{message}}</h1>
             <p><a href="bicycle.html">New Quote</a></p>

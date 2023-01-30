@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .controller('Bicycle', Bicycle);
+        .controller('BicycleController', BicycleController);
         
-    Bicycle.$inject = ['$scope', 'Common', 'BicycleServices'];
+    BicycleController.$inject = ['$scope', 'CommonServices', 'BicycleServices'];
     
-    function Bicycle ($scope, Common, BicycleServices) {
+    function BicycleController ($scope, CommonServices, BicycleServices) {
 
         $scope.Quote = {};
 
@@ -16,10 +16,10 @@
         $scope.HelmetAndClothingValueOptions = BicycleServices.GetHelmetAndClothingValueOptions();
         $scope.TypeOfCoverValueOptions = BicycleServices.GetTypeOfCoverOptions();
         $scope.ClaimOptions = BicycleServices.GetClaimsOptions();
-        $scope.CoverStartDateOptions = Common.GetCoverStartDates(30);
-        $scope.DayOptions = Common.GetDayOptions()
-        $scope.MonthOptions = Common.GetFullMonthOptions();
-        $scope.DateOfBirthYearOptions = Common.GetBirthdayYearOptions(18, 75);
+        $scope.CoverStartDateOptions = CommonServices.GetCoverStartDates(30);
+        $scope.DayOptions = CommonServices.GetDayOptions()
+        $scope.MonthOptions = CommonServices.GetFullMonthOptions();
+        $scope.DateOfBirthYearOptions = CommonServices.GetBirthdayYearOptions(18, 75);
 
         $scope.BicycleText = "bicycle";
         $scope.TotalBicycleValue = 0;
@@ -39,7 +39,7 @@
                     MakeModel: $scope.Bicycle.MakeModel,
                     Value: $scope.Bicycle.Value,
                     Type: $scope.Bicycle.Type,
-                    TypeName: Common.GetBicycleType($scope.Bicycle.Type)
+                    TypeName: CommonServices.GetBicycleType($scope.Bicycle.Type)
                 });
 
             if ($scope.Quote.Bicycles.length > 3) {
@@ -62,8 +62,8 @@
         $scope.CheckDateOfBirth = function () {
             if ($scope.DateOfBirthDay && $scope.DateOfBirthMonth && $scope.DateOfBirthYear) {
                 $scope.Quote.DateOfBirth = new Date(Date.UTC($scope.DateOfBirthYear, $scope.DateOfBirthMonth, $scope.DateOfBirthDay));
-                $scope.Quote.Age = Common.GetAge($scope.Quote.DateOfBirth);
-                $scope.Quote.InceptionAge = Common.GetAgeAtInception($scope.Quote.DateOfBirth, $scope.Quote.CoverStartDate);
+                $scope.Quote.Age = CommonServices.GetAge($scope.Quote.DateOfBirth);
+                $scope.Quote.InceptionAge = CommonServices.GetAgeAtInception($scope.Quote.DateOfBirth, $scope.Quote.CoverStartDate);
             }
         }
 

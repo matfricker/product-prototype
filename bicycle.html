@@ -6,14 +6,15 @@
         <link rel="stylesheet" href="assets/styles/main.css">
         <script src="/node_modules/angular/angular.js"></script>
         <script src="app/modules.js"></script>
-        <script src="app/controllers/main.js"></script>
-        <script src="app/controllers/bicycle.js"></script>
-        <script src="app/services/common.js"></script>
-        <script src="app/services/bicycle.js"></script>
+        <script src="app/controllers/main.controller.js"></script>
+        <script src="app/controllers/bicycle.controller.js"></script>
+        <script src="app/services/common.service.js"></script>
+        <script src="app/services/bicycle.service.js"></script>
+        <script src="app/services/user.service.js"></script>
     </head>
 
-    <body ng-controller="Main">
-        <div class="container" ng-cloak ng-controller="Bicycle">
+    <body ng-controller="MainController">
+        <div class="container" ng-cloak ng-controller="BicycleController">
             <div class="content">
 
                 <div class="debugging-container" ng-show="debugging">
