@@ -16,7 +16,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "http-server -o",
+    "start": "http-server -o -a localhost -p 8080",
     "test": "karma start"
   },
   "author": "Matt Fricker",
