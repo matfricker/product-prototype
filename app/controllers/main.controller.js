@@ -5,15 +5,15 @@
         .module('app')
         .controller('MainController', MainController);
 
-        MainController.$inject = ['$scope', 'UserServices'];
+        MainController.$inject = ['$scope', 'UserService'];
 
-    function MainController($scope, UserServices) {
+    function MainController($scope, UserService) {
         console.log('Hello from main / parent controller...');
 
         $scope.message = 'Bicycles';
         console.log($scope.message);
 
-        $scope.users = UserServices.GetAllUsers();
+        $scope.users = UserService.GetAllUsers();
         console.log($scope.users);
 
         $scope.debugging = true;

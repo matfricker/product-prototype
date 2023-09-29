@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .factory('BicycleServices', BicycleServices);
+        .factory('BicycleService', BicycleService);
 
-    BicycleServices.$inject = [];
+    BicycleService.$inject = [];
 
-    function BicycleServices() {
+    function BicycleService() {
         return {
             GetLengthOfCoverOptions: getLengthOfCoverOptions,
             GetBicycleTypeOptions: getBicycleTypeOptions,

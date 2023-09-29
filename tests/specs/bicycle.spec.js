@@ -1,18 +1,18 @@
 (function(){
     'use strict';
 
-    describe('BicycleServices factory', function() {
-        var BicycleServices;
+    describe('BicycleService factory', function() {
+        var bicycleService;
 
         beforeEach(angular.mock.module('app'));
 
-        beforeEach(angular.mock.inject(function(_BicycleServices_){
-            BicycleServices = _BicycleServices_;
+        beforeEach(angular.mock.inject(function(_bicycleService_) {
+            bicycleService = _bicycleService_;
         }));
 
         it('should exsit', function() {
-            expect(BicycleServices).toBeDefined();
-        })
+            expect(bicycleService).toBeDefined();
+        });
     });
 
 })();

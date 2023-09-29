@@ -5,17 +5,17 @@
         .module('app')
         .controller('BicycleController', BicycleController);
         
-    BicycleController.$inject = ['$scope', 'CommonServices', 'BicycleServices'];
+    BicycleController.$inject = ['$scope', 'CommonServices', 'BicycleService'];
     
-    function BicycleController ($scope, CommonServices, BicycleServices) {
+    function BicycleController ($scope, CommonServices, BicycleService) {
 
         $scope.Quote = {};
 
-        $scope.LengthOfCoverOptions = BicycleServices.GetLengthOfCoverOptions();
-        $scope.BicycleTypeOptions = BicycleServices.GetBicycleTypeOptions();
-        $scope.HelmetAndClothingValueOptions = BicycleServices.GetHelmetAndClothingValueOptions();
-        $scope.TypeOfCoverValueOptions = BicycleServices.GetTypeOfCoverOptions();
-        $scope.ClaimOptions = BicycleServices.GetClaimsOptions();
+        $scope.LengthOfCoverOptions = BicycleService.GetLengthOfCoverOptions();
+        $scope.BicycleTypeOptions = BicycleService.GetBicycleTypeOptions();
+        $scope.HelmetAndClothingValueOptions = BicycleService.GetHelmetAndClothingValueOptions();
+        $scope.TypeOfCoverValueOptions = BicycleService.GetTypeOfCoverOptions();
+        $scope.ClaimOptions = BicycleService.GetClaimsOptions();
         $scope.CoverStartDateOptions = CommonServices.GetCoverStartDates(30);
         $scope.DayOptions = CommonServices.GetDayOptions()
         $scope.MonthOptions = CommonServices.GetFullMonthOptions();

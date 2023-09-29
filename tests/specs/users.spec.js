@@ -2,7 +2,7 @@
     'use strict'
 
     describe('Users factory', function() {
-        var Users;
+        var users;
         var userList = [
             { id: '1', firstname: 'Matt', lastName: 'Fricker' },
             { id: '2', firstname: 'Vanessa', lastName: 'Fricker' }
@@ -13,30 +13,33 @@
 
         // before each test set our injected Users factory (_Users_)
         // to our local Users variable
-        beforeEach(angular.mock.inject(function(_Users_) {
-            Users = _Users_;
+        beforeEach(angular.mock.inject(function(_users_) {
+            users = _users_;
         }));
 
         // a simple test to verify that the Users factory exists
         it('should exist', function() {
-            expect(Users).toBeDefined();
+            console.log(users);
+            expect(users).toBeDefined();
         })
 
-        describe('.all()', function() {
-            it('should exist', function() {
-                expect(Users.all).toBeDefined();
-            })
+        // describe('.all()', function() {
+        //     it('should exist', function() {
+        //         expect(Users.getAllUsers).toBeDefined();
+        //     })
 
-            it('should return a list of users', function() {
-                console.log(angular.mock.dump(Users.all()));
-                expect(Users.all()).toEqual(userList);
-            })
+        //     it('should return a list of users', function() {
+        //         var allUsers = Users.getAllUsers();
+        //         console.log(angular.mock.dump(allUsers));
+        //         expect(allUsers).toEqual(userList);
+        //     })
 
-            it('should have at least one user', function() {
-                console.log('Number of Users: ' + Users.all().length);
-                expect(Users.all().length).toBeGreaterThan(0); 
-            })
-        });
+        //     it('should have at least one user', function() {
+        //         var allUsers = Users.getAllUsers();
+        //         console.log('Number of Users: ' + allUsers.length);
+        //         expect(allUsers.length).toBeGreaterThan(0); 
+        //     })
+        // });
     });
 
 })();

@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .factory('UserServices', UserServices);
+        .factory('UserService', UserService);
         
-    UserServices.$inject = [];
+    UserService.$inject = [];
 
-    function UserServices() {
+    function UserService() {
         return {
             GetAllUsers: getAllUsers
         };
