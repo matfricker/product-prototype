@@ -41,6 +41,10 @@ button {
     padding: 4px 2px;
 }
 
+.bicycle-link {
+    cursor: pointer;
+}
+
 :focus-visible {
     padding: 4px 2px;
     outline: none;

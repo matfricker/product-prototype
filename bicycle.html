@@ -31,16 +31,18 @@
                             <label class="" for="radio-lengthofcover-{{LengthOfCover.id}}">{{LengthOfCover.value}}</label>
                         </div>
                     </div>
-                        
+
                     <div class="section">
                         <!--BICYLE SECTION START-->
                         <label>Bicycles (max 4):</label>
                         <p ng-show="Quote.Bicycles.length > 0">You currently have <strong>{{Quote.Bicycles.length}} {{BicycleText}}</strong>, with a combined value of <strong>£{{TotalBicycleValue}}</strong> on the current quote.</p>
-                        
+
                         <ul style="padding-left: 10px;">
                             <li style="list-style-type: none;" ng-repeat="Bicycle in Quote.Bicycles">
                                 <strong>{{Bicycle.MakeModel | uppercase}}</strong> | <small>{{Bicycle.TypeName}}</small> | <small>&pound;{{Bicycle.Value}}</small></br>
-                                <a class="remove-link" ng-show="Quote.Bicycles.length > 1" ng-click="RemoveBicycle($index)">remove</a>
+                                <a class="bicycle-link remove" ng-show="Quote.Bicycles.length > 1" ng-click="RemoveBicycle($index)">remove</a>
+                                <span ng-show="Quote.Bicycles.length > 1">&nbsp;/&nbsp;</span>
+                                <a class="bicycle-link edit" ng-click="EditBicyle($index)">edit</a>
                             </li>
                         </ul>
 

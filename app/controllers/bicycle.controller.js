@@ -4,9 +4,9 @@
     angular
         .module('app')
         .controller('BicycleController', BicycleController);
-        
+
     BicycleController.$inject = ['$scope', 'CommonServices', 'BicycleService'];
-    
+
     function BicycleController ($scope, CommonServices, BicycleService) {
 
         $scope.Quote = {};
@@ -45,7 +45,7 @@
             if ($scope.Quote.Bicycles.length > 3) {
                 $scope.ShowAddBicycle = false;
             }
-        
+
             $scope.TotalBicycleValue += parseInt($scope.Bicycle.Value, 10);
 
             $scope.Bicycle = {};
@@ -57,6 +57,10 @@
             if ($scope.Quote.Bicycles.length <= 3) {
                 $scope.ShowAddBicycle = true;
             }
+        }
+
+        $scope.EditBicyle = function (index) {
+            console.log(`Edit Bicycle ${index}`);
         }
 
         $scope.CheckDateOfBirth = function () {
